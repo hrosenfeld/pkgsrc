@@ -1,10 +1,74 @@
-$NetBSD: patch-source_Host_CMakeLists.txt,v 1.1 2018/12/23 00:14:08 adam Exp $
+$NetBSD$
 
-On Darwin, also use libxml2 provided by PkgSrc.
-
---- source/Host/CMakeLists.txt.orig	2018-12-22 21:03:37.000000000 +0000
+--- source/Host/CMakeLists.txt.orig	2019-03-29 17:47:26.000000000 +0000
 +++ source/Host/CMakeLists.txt
-@@ -145,13 +145,9 @@ set(EXTRA_LIBS)
+@@ -81,7 +81,6 @@ else()
+     posix/DomainSocket.cpp
+     posix/FileSystem.cpp
+     posix/HostInfoPosix.cpp
+-    posix/HostProcessPosix.cpp
+     posix/HostThreadPosix.cpp
+     posix/LockFilePosix.cpp
+     posix/PipePosix.cpp
+@@ -92,6 +91,9 @@ else()
+     include_directories(SYSTEM ${LIBXML2_INCLUDE_DIR})
+     add_subdirectory(macosx/objcxx)
+     set(LLDBObjCLibs lldbHostMacOSXObjCXX)
++    add_host_subdirectory(posix
++      posix/HostProcessPosix.cpp
++      )
+     add_host_subdirectory(macosx
+       macosx/cfcpp/CFCBundle.cpp
+       macosx/cfcpp/CFCData.cpp
+@@ -107,6 +109,9 @@ else()
+ 
+ 
+   elseif (CMAKE_SYSTEM_NAME MATCHES "Linux|Android")
++    add_host_subdirectory(posix
++      posix/HostProcessPosix.cpp
++      )
+     add_host_subdirectory(linux
+       linux/AbstractSocket.cpp
+       linux/Host.cpp
+@@ -121,22 +126,37 @@ else()
+         )
+     endif()
+   elseif (CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
++    add_host_subdirectory(posix
++      posix/HostProcessPosix.cpp
++      )
+     add_host_subdirectory(freebsd
+       freebsd/Host.cpp
+       freebsd/HostInfoFreeBSD.cpp
+       )
+ 
+   elseif (CMAKE_SYSTEM_NAME MATCHES "NetBSD")
++    add_host_subdirectory(posix
++      posix/HostProcessPosix.cpp
++      )
+     add_host_subdirectory(netbsd
+       netbsd/Host.cpp
+       netbsd/HostInfoNetBSD.cpp
+       )
+ 
+   elseif (CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
++    add_host_subdirectory(posix
++      posix/HostProcessPosix.cpp
++      )
+     add_host_subdirectory(openbsd
+       openbsd/Host.cpp
+       openbsd/HostInfoOpenBSD.cpp
+       )
++  elseif (CMAKE_SYSTEM_NAME MATCHES "SunOS")
++    add_host_subdirectory(sunos
++      sunos/Host.cpp
++      sunos/HostInfoSunOS.cpp
++      sunos/HostProcessSunOS.cpp
++      )
+   endif()
+ endif()
+ 
+@@ -144,13 +164,12 @@ set(EXTRA_LIBS)
  if (CMAKE_SYSTEM_NAME MATCHES "NetBSD")
    list(APPEND EXTRA_LIBS kvm)
  endif ()
@@ -14,7 +78,9 @@ On Darwin, also use libxml2 provided by PkgSrc.
 -  if (LIBXML2_FOUND)
 -    list(APPEND EXTRA_LIBS ${LIBXML2_LIBRARIES})
 -  endif()
--endif ()
++if (CMAKE_SYSTEM_NAME MATCHES "SunOS")
++  list(APPEND EXTRA_LIBS proc)
+ endif ()
 +if (LIBXML2_FOUND)
 +  list(APPEND EXTRA_LIBS ${LIBXML2_LIBRARIES})
 +endif()

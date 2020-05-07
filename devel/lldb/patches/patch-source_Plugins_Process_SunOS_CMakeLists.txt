@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- /dev/null	2020-04-02 17:04:21.000000000 +0000
++++ source/Plugins/Process/SunOS/CMakeLists.txt
+@@ -0,0 +1,17 @@
++add_lldb_library(lldbPluginProcessSunOS PLUGIN
++  NativeProcessSunOS.cpp
++  NativeRegisterContextSunOS.cpp
++  NativeRegisterContextSunOS_x86_64.cpp
++  NativeThreadSunOS.cpp
++
++  LINK_LIBS
++    lldbHost
++    lldbSymbol
++    lldbTarget
++    lldbUtility
++    lldbPluginProcessPOSIX
++    lldbPluginProcessUtility
++    proc
++  LINK_COMPONENTS
++    Support
++  )

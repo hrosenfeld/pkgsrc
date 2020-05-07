@@ -26,7 +26,7 @@ GCC_REQD+=		4.8
 PY_PATCHPLIST=		yes
 
 CMAKE_ARGS+=	-DLLVM_CONFIG=${LLVM_CONFIG_PATH}
-CMAKE_ARGS+=	-DCMAKE_BUILD_TYPE=Release
+CMAKE_ARGS+=	-DCMAKE_BUILD_TYPE=Debug
 CMAKE_ARGS+=	-DCMAKE_C_COMPILER=${CC:Q}
 CMAKE_ARGS+=	-DCMAKE_CXX_COMPILER=${CXX:Q}
 CMAKE_ARGS+=	-DHAVE_CXX_ATOMICS64_WITHOUT_LIB=ON
@@ -78,6 +78,7 @@ post-extract:
 	${MKDIR} ${WRKDIR}/build
 
 #.include "../../devel/googletest/buildlink3.mk" # check-lldb-unit
+.include "../../devel/editline/buildlink3.mk"
 .include "../../devel/libatomic_ops/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../lang/clang/buildlink3.mk"

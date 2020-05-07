@@ -1,0 +1,19 @@
+$NetBSD$
+
+--- source/Plugins/Process/Utility/CMakeLists.txt.orig	2019-06-11 20:16:13.000000000 +0000
++++ source/Plugins/Process/Utility/CMakeLists.txt
+@@ -42,11 +42,14 @@ add_lldb_library(lldbPluginProcessUtilit
+   RegisterContextPOSIX_ppc64le.cpp
+   RegisterContextPOSIX_s390x.cpp
+   RegisterContextPOSIX_x86.cpp
++  RegisterContextSunOS_i386.cpp
++  RegisterContextSunOS_x86_64.cpp
+   RegisterContextThreadMemory.cpp
+   RegisterInfoPOSIX_arm.cpp
+   RegisterInfoPOSIX_arm64.cpp
+   RegisterInfoPOSIX_ppc64le.cpp
+   StopInfoMachException.cpp
++  SunOSSignals.cpp
+   ThreadMemory.cpp
+   UnwindLLDB.cpp
+   UnwindMacOSXFrameBackchain.cpp

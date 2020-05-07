@@ -1,0 +1,10 @@
+$NetBSD$
+
+--- source/Initialization/CMakeLists.txt.orig	2019-05-06 19:38:24.000000000 +0000
++++ source/Initialization/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-if ( CMAKE_SYSTEM_NAME MATCHES "Linux|Android|FreeBSD|NetBSD" )
++if ( CMAKE_SYSTEM_NAME MATCHES "Linux|Android|FreeBSD|NetBSD|SunOS" )
+   list(APPEND EXTRA_PLUGINS lldbPluginProcessPOSIX)
+ endif()
+ 

@@ -1,0 +1,14 @@
+$NetBSD$
+
+--- /dev/null	2020-03-11 17:01:41.000000000 +0000
++++ source/Plugins/Platform/SunOS/CMakeLists.txt
+@@ -0,0 +1,9 @@
++add_lldb_library(lldbPluginPlatformSunOS PLUGIN
++  PlatformSunOS.cpp
++
++   LINK_LIBS
++    lldbBreakpoint
++    lldbCore
++    lldbHost
++    lldbTarget
++  )

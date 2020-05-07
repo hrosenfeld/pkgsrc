@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- source/Plugins/Platform/CMakeLists.txt.orig	2020-03-11 17:00:13.877561762 +0000
++++ source/Plugins/Platform/CMakeLists.txt
+@@ -8,6 +8,8 @@
+   add_subdirectory(OpenBSD)
+ #elseif (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+   add_subdirectory(MacOSX)
++#elseif (CMAKE_SYSTEM_NAME MATCHES "SunOS")
++  add_subdirectory(SunOS)
+ #elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
+   add_subdirectory(Windows)
+ #endif()

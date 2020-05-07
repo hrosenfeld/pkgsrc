@@ -97,6 +97,7 @@ CMAKE_ARGS+=			-DCLANG_DEFAULT_CXX_STDLIB:STRING="libstdc++"
 .include "../../lang/libunwind/buildlink3.mk"
 CMAKE_ARGS+=    -DCLANG_DEFAULT_RTLIB:STRING="compiler-rt"
 CMAKE_ARGS+=    -DCLANG_DEFAULT_CXX_STDLIB:STRING="libc++"
+CXXFLAGS.SunOS+=	-frtti
 .endif
 
 # 3.8.0 -> 3.8

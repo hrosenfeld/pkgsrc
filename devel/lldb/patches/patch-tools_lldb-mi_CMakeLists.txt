@@ -1,0 +1,15 @@
+$NetBSD$
+
+--- tools/lldb-mi/CMakeLists.txt.orig	2019-05-29 11:26:06.000000000 +0000
++++ tools/lldb-mi/CMakeLists.txt
+@@ -3,6 +3,10 @@ if ( CMAKE_SYSTEM_NAME MATCHES "Windows"
+   list(APPEND extra_libs lldbHost)
+ endif ()
+ 
++if ( CMAKE_SYSTEM_NAME MATCHES "SunOS" )
++  list(APPEND extra_libs socket)
++endif ()
++
+ if (HAVE_LIBPTHREAD)
+   list(APPEND extra_libs pthread)
+ endif ()

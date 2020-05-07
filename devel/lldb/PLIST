@@ -262,6 +262,8 @@ include/lldb/Host/posix/HostThreadPosix.h
 include/lldb/Host/posix/LockFilePosix.h
 include/lldb/Host/posix/PipePosix.h
 include/lldb/Host/posix/ProcessLauncherPosixFork.h
+include/lldb/Host/sunos/HostInfoSunOS.h
+include/lldb/Host/sunos/HostProcessSunOS.h
 include/lldb/Host/windows/AutoHandle.h
 include/lldb/Host/windows/ConnectionGenericFileWindows.h
 include/lldb/Host/windows/HostInfoWindows.h
