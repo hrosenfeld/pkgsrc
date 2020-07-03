@@ -7,4 +7,5 @@ Size (lldb-9.0.0.src.tar.xz) = 9846624 bytes
 SHA1 (patch-cmake_modules_LLDBStandalone.cmake) = 55a8d614cc52872968fc7c7c205c7d6e4021b538
 SHA1 (patch-source_API_CMakeLists.txt) = 07e3e45f36af36f18ab5837bba170bd9bdc94b74
 SHA1 (patch-source_Host_CMakeLists.txt) = 5c7ae7b896aa110fe7ab21ed3616350e0958bc2a
+SHA1 (patch-source_Plugins_Process_Utility_lldb-x86-register-enums.h) = f4503bf3e7d5d65959899dce4d3436270446d8d6
 SHA1 (patch-source_Plugins_Process_gdb-remote_GDBRemoteCommunicationClient.cpp) = 38e5d86e6ca32fef6796c85e1ca8933e5f1a10d6
